@@ -1,0 +1,62 @@
+<html>
+	<title>3D tactile book twitter information</title>
+	<body>
+	<h1>Example</h1>
+	<center>
+	<table>
+			input hashtag or search keyword
+			<br><br>
+	</table>
+		<a class="twitter-timeline" 
+			data-dnt="true" 
+			href="https://twitter.com/iamqubick" 
+			data-widget-id="449318847519010816">Tweets by @iamqubick</a>
+		<script>
+			!function(d,s,id){
+				var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+				if( !d.getElementById(id) ){
+					js=d.createElement(s);
+					js.id=id;js.src=p+"://platform.twitter.com/widgets.js";
+					fjs.parentNode.insertBefore(js,fjs);}
+				}(document,"script","twitter-wjs");
+			</script>
+
+	<?php
+		require_once('TwitterAPIEXchange.php');
+
+		$settings = array(
+		'oauth_access_token' = '143728807-cHJCg0EP2HVTYwqvmmLjdUqCKIVeriL5falTxbkb',
+		'oauth_access_token_secret' = 'yj3p8Lj9WvqbaCuByYv32tZtoSUsjLdmP9Ikri4yUijrm',
+		'customer_key' = 'ZosO7jzK769w5b7xwnUGw',
+		'cunsumer_secret' = 'duDJuwWLo2pgDJrtOsb3Eu1yrjzBJE7jq1yhw1tamM'
+		);
+
+		$url = ' https://api.twitter.com/1.1/statuses/home_timeline.json';
+		$getfield = '?username=J7mbo&skip_status=1';
+		$requestMethod = 'GET';
+		$twitter = new TwitterAPIExchange($settings);
+		echo $twitter.setGetfield($getfield)
+		             .buildOauth($url, $requestMethod).performRequest(); 
+
+		//retrieve twitter using hashtag
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, "http://twitter.com/statuses/user_timeline/myscreenname.json?count=10");
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$output = curl_exec($ch);
+
+		curl_close($ch);
+
+		if($output)
+		{
+			$tweets = json_decode($output, true);
+
+			foreach ($tweets as $tweet){
+				print_r($tweet);
+			}
+		}
+		?>
+
+	<div>
+	</div>
+</body>
+</html>
