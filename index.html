@@ -1,18 +1,54 @@
 <html>
-	<title>3D tactile book twitter information</title>
+	<head>
+			<title>3D tactile book twitter information</title>
+			<style type="text/css">
+					.title {
+						display: block;
+						font: 60px "Helvetica Neue", Helvetica, Arial, sans-serif; 
+						font-weight: 100;
+						color: #353535;
+						width: 100%;
+					}
+					.description {
+						postion: relative;
+						top: -5px;
+						font: 100 60px "Helvetica Neue", Helvetica, Arial, sans-serif;
+						color: #cecece;
+						line-height: .80;
+				}
+				.nav {
+					position: fixed;
+					top: 20px;
+					right: 15px;
+					z-index: 100;
+				}
+
+				.nav a{
+					margin: 0 5px;
+					padding-right: 15px;
+					border-right: 1px dotted #eee;
+				}	
+	</style>
+	</head>
 	<body>
 		<section id="content">
 		<header>
 			<section id="logo">
-				<a href="/" class="ex1">Tactile Book</a>
+			<a href="/" class="title">Tactile Book</a>
+			<br>
 				<span class="description">
-					"This web application gets your search term, add terms to the traditional DB table, retrieve related data from" 
-					<a href="http://twitter.com"> twitter </a>
+						web aplication <br>
+						collects search term and <br>
+						retrieves related information<br> 
+						from twitter
+					<!-- a href="http://twitter.com"> twitter </a-->
 				</span>
 			</section>
+
 			<nav class="nav">
 				<a href="/" class="active">Home</a>
-				<a href="">
+				<a href="/" class="">Down</a>
+				<a href="/" class="">Twitter</a>
 			</nav>
 		</header>
 	<center>	
