@@ -197,6 +197,10 @@
 			<br><br>
 	</table>
 
+	<script>
+		var data = {"firstName" : "Ray"};
+		alert(data.firstName);
+	</script>
 	<!-- create tactile related list, add widget -->
 		<a class="twitter-timeline" 
 			data-dnt="true" 
@@ -208,9 +212,10 @@
 				if( !d.getElementById(id) ){
 					js=d.createElement(s);
 					js.id=id;js.src=p+"://platform.twitter.com/widgets.js";
-					fjs.parentNode.insertBefore(js,fjs);}
-				}(document,"script","twitter-wjs");
-			</script>
+					fjs.parentNode.insertBefore(js,fjs);
+		 		}
+			}(document,"script","twitter-wjs");
+		</script>
 
 	<?php
 		require_once('TwitterAPIEXchange.php');
