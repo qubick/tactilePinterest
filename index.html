@@ -138,7 +138,12 @@
 				margin-bottom: 20px;
 			}
 	</style>
+	<!-- script type="text/javascript">
+			  alert("aa");
+	</script -->
+
 	</head>
+
 	<body>
 		<section id="content">
 		<header>
@@ -163,41 +168,37 @@
 		</section>
 
 		<section id="json">
-			<a href="tweet_example.json" target="_blank"> Open JSON file</a>
-			<input type="button" value="Get and parse JSON" class="button">
+			<a href="data.json" target="_blank"> Open JSON file</a>
+			<input type="button" value="Get and parse JSON" clase="button" id="btn">
 			<br>
-
-			<span id="results"></span>
-
-			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
-			<script>
+			<span id="result"></span>
+			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+			<script type="text/javascript">
 				$(document).ready(function(){
-					$('.button').click(function(){
-								
+									 alert("DOM ready");
+					 
+								 //after DOM is ready, attach button click event
+				$('#btn').click(function(){
+						  alert("button clicked");
+						
 						//start ajax request
 						$.ajax({
-							url:"tweet_collection.json",
-							dataType: "json",
+							url:"data.json",
+							//force to handle it as text
+							dataType: "text",
 							success: function(data){
 							
-								var jason = $.parseJSON(data);
-								for(var i = 0; i<jason.length; i++){
-									var obj = jason[i];
+								var json = $.parseJSON(data);
+								//for(var i = 0; i<jason.length; i++){
+								//	var obj = jason[i];
 								
-									//how to show?? 
-									#().html('user: ' + obj.name + '<br>'
-														 + 'Text: ' + obj.text);
-									alert(obj.name);
+								$('#result').html('user: ' + json.name + '<br />Text: ' + json.author.name);
+								//	alert(obj.name);
 								}
-							$.getJSON('tweet_example.json', function(json){ //fetch json
-									for(var i in json){ //curl
-										var get = json[i].text;
-										alert(get);
-										#().html(get);
-									}						 
-						});
-					});
+	
+								});
 				});
+			});
 			</script>
 		</section>
 		<section id="intro">
