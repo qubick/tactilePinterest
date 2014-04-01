@@ -168,7 +168,7 @@
 		</section>
 
 		<section id="json">
-			<a href="data.json" target="_blank"> Open JSON file</a>
+		<a href="data22.json" target="_blank"> Open JSON file</a>
 			<input type="button" value="Get and parse JSON" clase="button" id="btn">
 			<br>
 			<span id="result"></span>
@@ -183,7 +183,7 @@
 						
 						//start ajax request
 						$.ajax({
-							url:"data.json",
+							url:"data2.json",
 							//force to handle it as text
 							dataType: "text",
 							success: function(data){
@@ -191,8 +191,7 @@
 								var json = $.parseJSON(data);
 								//for(var i = 0; i<jason.length; i++){
 								//	var obj = jason[i];
-								
-								$('#result').html('user: ' + json.name + '<br />Text: ' + json.author.name);
+								$('#result').html('user: ' + json.name + '<br />author: ' + json.author.name + '<br />url: ' + json.url + '<br />keywords: ' + json.keywords);
 								//	alert(obj.name);
 								}
 	
@@ -243,21 +242,44 @@
 	</script -->
 	<!-- create tactile related list, add widget -->
 
+
 		<a class="twitter-timeline" 
 			data-dnt="true" 
-			href="https://twitter.com/iamqubick" 
-			data-widget-id="449318847519010816">Tweets by @iamqubick</a>
+			href="https://twitter.com/iamqubick/printing3d" 
+			data-widget-id="451050605256007680">Tweets from https://twotter.com/iamqubick/printing3d</a>
  
  		<script>
+	  	//timeline for 3d printing list
 			!function(d,s,id){
-				var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+				var js,fjs = d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
 				if( !d.getElementById(id) ){
-					js=d.createElement(s);
-					js.id=id;js.src=p+"://platform.twitter.com/widgets.js";
+					js = d.createElement(s);
+					js.id = id;
+					js.src = p + "://platform.twitter.com/widgets.js";
 					fjs.parentNode.insertBefore(js,fjs);
 		 		}
 			}(document,"script","twitter-wjs");
 		</script>
+
+		&nbsp; &nbsp;
+
+		<a class="twitter-timeline" 
+			href="https://twitter.com/search?q=%23tactile"
+			data-widget-id="451052939755278336">Tweets about #tactile</a>
+
+ 		<script>
+		//timeline for #tactile hashtag
+			!function(d,s,id){
+				var js,fjs = d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+				if( !d.getElementById(id) ){
+						  js = d.createElement(s);
+						  js.id = id;
+						  js.src = p + "://platform.twitter.com/widgets.js";
+						  fjs.parentNode.insertBefore(js,fjs);
+						  }
+				}(document,"script","twitter-wjs");
+	 	</script>
+
 
 	<?php
 		require_once('TwitterAPIEXchange.php');
