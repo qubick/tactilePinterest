@@ -168,34 +168,34 @@
 		</section>
 
 		<section id="json">
-		<a href="data22.json" target="_blank"> Open JSON file</a>
+		<a href="data2.json" target="_blank"> Open JSON file</a>
 			<input type="button" value="Get and parse JSON" clase="button" id="btn">
 			<br>
 			<span id="result"></span>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 			<script type="text/javascript">
 				$(document).ready(function(){
-									 alert("DOM ready");
+				//	alert("DOM ready");
 					 
-								 //after DOM is ready, attach button click event
-				$('#btn').click(function(){
-						  alert("button clicked");
+				 //after DOM is ready, attach button click event
+					$('#btn').click(function(){
+					 	alert("inside btn click event");
 						
 						//start ajax request
 						$.ajax({
-							url:"data2.json",
+							url:"data3.json",
 							//force to handle it as text
-							dataType: "text",
+							dataType: "json",
 							success: function(data){
-							
-								var json = $.parseJSON(data);
-								//for(var i = 0; i<jason.length; i++){
-								//	var obj = jason[i];
-								$('#result').html('user: ' + json.name + '<br />author: ' + json.author.name + '<br />url: ' + json.url + '<br />keywords: ' + json.keywords);
-								//	alert(obj.name);
-								}
-	
+								alert(data);
+
+								var json = $.each($.getJSON(data), function(){
+					//			alert(json[i]);
+								$('#result').html('user: ' + json[0].name + '<br />author: ' + json[0].author.name + '<br />url: ' + json[0].url + '<br />keywords: ' + json[0].keywords);
+								$('#result').html('user: ' + json[1].name + '<br />author: ' +json[1].author.name);
 								});
+							}	
+					});
 				});
 			});
 			</script>
