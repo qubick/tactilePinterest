@@ -185,14 +185,13 @@
 						$.ajax({
 							url:"data3.json",
 							//force to handle it as text
-							dataType: "json",
+							dataType: "text",
 							success: function(data){
-								alert(data);
+								alert(data); //data is text
 
-								var json = $.each($.getJSON(data), function(){
-					//			alert(json[i]);
-								$('#result').html('user: ' + json[0].name + '<br />author: ' + json[0].author.name + '<br />url: ' + json[0].url + '<br />keywords: ' + json[0].keywords);
-								$('#result').html('user: ' + json[1].name + '<br />author: ' +json[1].author.name);
+								var json = $.each($.parseJSON(data), function(){
+								//	alert(json); //json is object
+									$('#result').html('user: ' + this.name + '<br />author: ' + this.author.name + '<br />url: ' + this.author.url + '<br />keywords: ' + this.keywords);
 								});
 							}	
 					});
