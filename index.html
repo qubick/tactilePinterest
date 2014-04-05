@@ -190,13 +190,16 @@
 //								alert(data); //data is text
 
 								var json = $.each($.parseJSON(data), function(){
-									alert(json.keywords); //json is object
-									var tags = json.keywords;
+									//alert(this.keywords); //json is object
+									
+									var tags = this.keywords;
+									alert(tags);
+
 									for (var i in tags){
 										var res = tags[i].match(/a/g); //matching regexs
 										if(res){
-											//$('#result').html('user: ' + this.name + '<br />author: ' + this.author.name + '<br />url: ' + this.author.url + '<br />keywords: ' + this.keywords);
-										$('#results').html(res);
+							//				$('#result').html('user: ' + this.name + '<br />author: ' + this.author.name + '<br />url: ' + this.author.url + '<br />keywords: ' + this.keywords);
+											$('#results').html(res);
 										}
 									}	
 										//		  alert(this.author.url);
@@ -258,7 +261,8 @@
  		<script>
 	  	//timeline for 3d printing list
 			!function(d,s,id){
-				var js,fjs = d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+				var js,fjs = d.getElementsByTagName(s)[0],
+					  		p = /^http:/.test(d.location)?'http':'https';
 				if( !d.getElementById(id) ){
 					js = d.createElement(s);
 					js.id = id;
@@ -277,7 +281,8 @@
  		<script>
 		//timeline for #tactile hashtag
 			!function(d,s,id){
-				var js,fjs = d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+				var js,fjs = d.getElementsByTagName(s)[0],
+					  		p = /^http:/.test(d.location)?'http':'https';
 				if( !d.getElementById(id) ){
 						  js = d.createElement(s);
 						  js.id = id;
@@ -287,6 +292,16 @@
 				}(document,"script","twitter-wjs");
 	 	</script>
 
+
+		<br>
+		<a data-pin-do="embedBoard" 
+			href="http://www.pinterest.com/pinterest/pin-pets/"
+			data-pin-scale-width="80" 
+			data-pin-scale-height="320" 
+			data-pin-board-width="400"></a>
+		<!-- Please call pinit.js only once per page -->
+		<script type="text/javascript" async 
+				  src="//assets.pinterest.com/js/pinit.js"></script>
 
 	<?php
 		require_once('TwitterAPIEXchange.php');
