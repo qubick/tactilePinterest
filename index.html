@@ -187,11 +187,19 @@
 							//force to handle it as text
 							dataType: "text",
 							success: function(data){
-								alert(data); //data is text
+//								alert(data); //data is text
 
 								var json = $.each($.parseJSON(data), function(){
-								//	alert(json); //json is object
-									$('#result').html('user: ' + this.name + '<br />author: ' + this.author.name + '<br />url: ' + this.author.url + '<br />keywords: ' + this.keywords);
+									alert(json.keywords); //json is object
+									var tags = json.keywords;
+									for (var i in tags){
+										var res = tags[i].match(/a/g); //matching regexs
+										if(res){
+											//$('#result').html('user: ' + this.name + '<br />author: ' + this.author.name + '<br />url: ' + this.author.url + '<br />keywords: ' + this.keywords);
+										$('#results').html(res);
+										}
+									}	
+										//		  alert(this.author.url);
 								});
 							}	
 					});
