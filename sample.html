@@ -45,7 +45,9 @@
 								var tags = json.keywords;
 								for(var i in tags){
 									var res = tags[i].match(/tag/g);
-									alert(res);
+									if(res){
+										alert(res);
+									}
 								}
 								//$('#results').html('Plugin name: ' + json.name + '<br />Author: ' + json.author.name + '<br />url: ' + json.author.url);
 								$('#results').html("results: " + res);
