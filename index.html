@@ -168,7 +168,7 @@
 		</section>
 
 		<section id="json">
-		<a href="data2.json" target="_blank"> Open JSON file</a>
+		<a href="data3.json" target="_blank"> Open JSON file</a>
 			<input type="button" value="Get and parse JSON" clase="button" id="btn">
 			<br>
 			<span id="result"></span>
@@ -210,6 +210,26 @@
 			});
 			</script>
 		</section>
+
+		<?php
+			$host = "localhost";
+			$user = "qubick";
+			$pass = "akf333";
+			$db = "testdb";
+
+			$con = pg_connect("host=$host dbname=$db user=$user password=$pass);
+				or die("Could not connect to server\n");
+
+			$query = "SELECT VERSION()";
+			$rs = pg_query($con, $query) 
+				or die("Cannot execute query: $query\n");
+			$row = pg_fetch_row($rs);
+
+			echo $row[0] . "\n";
+			pg_close($con);
+
+		?>
+
 		<section id="intro">
 			<div class="content">
 			<div id="boxes" class="clearfix">
