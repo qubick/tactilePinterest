@@ -180,13 +180,15 @@
 			<script type="text/javascript">
 				$(document).ready(function(){
 			//		alert("DOM ready");
-					 
+									 var stream = "_";
+
 				 //after DOM is ready, attach button click event
 					$('#btn').click(function(){
 					 	alert("inside btn click event");
 
 						var x = document.getElementById("hashList").value;
-						alert(x);
+						stream  = stream + ' ' + x;
+						alert(stream);
 						
 						//start ajax request
 						$.ajax({
