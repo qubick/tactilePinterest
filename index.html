@@ -171,18 +171,22 @@
 		<a href="data3.json" target="_blank"> Open JSON file</a>
 			<br>
 			<p>
-			<input type="text" placeholder="type hashtags" onfocus="this.placeholder = ''" onblur="this.placeholder = 'enter your text'" />
-			<input type="button" value="Add Hashs" clase="button" id="btn">
+			<input type="text" id="hashList" placeholder="type hashtags" onfocus="this.placeholder = ''" onblur="this.placeholder = 'enter your text'" />
+			<input type="button" value="Add Hashs" class="button" id="btn">
+
 			<br>
 			<span id="result"></span>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 			<script type="text/javascript">
 				$(document).ready(function(){
-				//	alert("DOM ready");
+			//		alert("DOM ready");
 					 
 				 //after DOM is ready, attach button click event
 					$('#btn').click(function(){
 					 	alert("inside btn click event");
+
+						var x = document.getElementById("hashList").value;
+						alert(x);
 						
 						//start ajax request
 						$.ajax({
@@ -203,12 +207,11 @@
 										if(res){
 							//				$('#result').html('user: ' + this.name + '<br />author: ' + this.author.name + '<br />url: ' + this.author.url + '<br />keywords: ' + this.keywords);
 											$('#results').html(res);
-										}
-									}	
-										//		  alert(this.author.url);
-								});
-							}	
-					});
+										} //end of if
+									} //end of for	
+								}); //end of each
+							} // end of success callback function()	
+					}); //end of $.ajax
 				});
 			});
  		</script>
