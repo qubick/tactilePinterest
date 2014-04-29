@@ -189,7 +189,9 @@
 						var x = document.getElementById("hashList").value;
 						stream  = stream + ' ' + x;
 						alert(stream);
-						
+
+						$('#result').html(stream);
+
 						//start ajax request
 						$.ajax({
 							url:"data3.json",
