@@ -161,15 +161,18 @@
 
 			<nav class="nav">
 				<a href="/" class="active">Home</a>
-				<a href="/" class="">Down</a>
-				<a href="www.twitter.com" target="section id='intro'" class="">Twitter</a>
+				<a href="/" class="">Tweets</a>
+				<a href="www.twitter.com" target="section id='intro'" class="">Widget</a>
 			</nav>
 			</header>
 		</section>
 
 		<section id="json">
 		<a href="data3.json" target="_blank"> Open JSON file</a>
-			<input type="button" value="Get and parse JSON" clase="button" id="btn">
+			<br>
+			<p>
+			<input type="text" placeholder="type hashtags" onfocus="this.placeholder = ''" onblur="this.placeholder = 'enter your text'" />
+			<input type="button" value="Add Hashs" clase="button" id="btn">
 			<br>
 			<span id="result"></span>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -208,14 +211,17 @@
 					});
 				});
 			});
-			</script>
+ 		</script>
+		</p>
 		</section>
 
 		<?php
+			//connect to the db
+
 			$host = "localhost";
-			$user = "qubick";
-			$pass = "akf333";
-			$db = "testdb";
+			$user = "postgres";
+			$pass = "postgres";
+			$db = "tactile";
 
 			$con = pg_connect("host=$host dbname=$db user=$user password=$pass);
 				or die("Could not connect to server\n");
@@ -236,6 +242,7 @@
 				<section id="web-applications">
 						<h3>#3D_printing</h3>
 						<p>
+						<!-- php insert concatenated string-->
 							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 						</p>
 				</section>
