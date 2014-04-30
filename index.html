@@ -171,6 +171,13 @@
 			<input type="text" id="hashList" placeholder="type hashtags" onfocus="this.placeholder = ''" onblur="this.placeholder = 'enter your text'" />
 			<input type="button" value="Add Hashs" class="button" id="btn">
 
+			<?php
+				$conn = pg_pconnect("dbname=tactile");
+
+				$query = "insert tag and the time now";
+				pg_query($conn, $query);
+			?>
+
 			<br>
 			<span id="result"></span>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
