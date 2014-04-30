@@ -138,9 +138,6 @@
 				margin-bottom: 20px;
 			}
 	</style>
-	<!-- script type="text/javascript">
-			  alert("aa");
-	</script -->
 
 	</head>
 
@@ -168,7 +165,7 @@
 		</section>
 
 		<section id="json">
-		<a href="data3.json" target="_blank"> Open JSON file</a>
+		<!-- a href="data3.json" target="_blank"> Open JSON file</a -->
 			<br>
 			<p>
 			<input type="text" id="hashList" placeholder="type hashtags" onfocus="this.placeholder = ''" onblur="this.placeholder = 'enter your text'" />
@@ -182,9 +179,10 @@
 			//		alert("DOM ready");
 					var stream = "";
 					var tagCnt = 0;
-				 //after DOM is ready, attach button click event
+  
+					//after DOM is ready, attach button click event
 					$('#btn').click(function(){
-					 	alert("inside btn click event");
+					// 	alert("inside btn click event");
 
 						var x = document.getElementById("hashList").value;
 						//if(!(y = x.match(/a)))
@@ -192,15 +190,24 @@
 						//else
 						stream  = stream + '\t' + x;
 							//this stream need to save to RDB
-						if(tagCnt === 0)
-							$('#first_h3').html(x);
-						else if(tagCnt === 1)
-							$('#second_h3').html(x);
-						else if(tagCnt ===2)
-							$('#third_h3').html(x);
-						else
-							$('#fourth_h3').html(x);		
-						//clean filed
+						if(tagCnt === 0){
+								$('#first_h3').html(x);
+							//data from DB
+							//$('first_twt_field').html(data);
+						} else if(tagCnt === 1) {
+								$('#second_h3').html(x);
+							//data from DB
+							//$('second_twt_field').html(data);	
+						} else if(tagCnt === 2) {
+								$('#third_h3').html(x);
+							//data from DB
+							//$('third_twt_field').html(data);
+						} else if(tagCnt === 3) {
+								$('#fourth_h3').html(x);
+								//data from DB
+								//$('second_twt_field').html(data);
+						}
+						//clear filed
 						document.getElementById("hashList").value = "";
 						tagCnt++;
 
@@ -222,7 +229,7 @@
 									for (var i in tags){
 										var res = tags[i].match(a/tag); //matching regexs
 										if(res){
-							//				$('#result').html('user: ' + this.name + '<br />author: ' + this.author.name + '<br />url: ' + this.author.url + '<br />keywords: ' + this.keywords);
+							//				$('#result').html('user: ' + this.name + '<br />keywords: ' + this.keywords);
 											$('#results').html(res);
 										} //end of if
 									} //end of for	
@@ -262,7 +269,7 @@
 				<section id="web-applications">
 				<!-- h3>#3D_printing</h3-->
 				<h3 id="first_h3"></h3>
-						<p id="first_tst_field">
+						<p id="first_twt_field">
 						<!-- php insert concatenated string-->
 							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 						</p>
@@ -282,7 +289,7 @@
 				<section id="book">
 					<h3 id="fourth_h3"></h3>
 					<p id="fourth_twt_filed">
-						There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+						There are many varia:tions of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
 					</p>
 				</section>
 		</section>
@@ -294,13 +301,7 @@
 			<br><br>
 	</table>
 
-	<!-- script> popup script
-		var data = {"firstName" : "Ray"};
-		alert(data.firstName);
-	</script -->
 	<!-- create tactile related list, add widget -->
-
-
 		<a class="twitter-timeline" 
 			data-dnt="true" 
 			href="https://twitter.com/iamqubick/printing3d" 
