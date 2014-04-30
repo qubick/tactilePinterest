@@ -180,18 +180,20 @@
 			<script type="text/javascript">
 				$(document).ready(function(){
 			//		alert("DOM ready");
-									 var stream = "_";
+									 var stream = "";
 
 				 //after DOM is ready, attach button click event
 					$('#btn').click(function(){
 					 	alert("inside btn click event");
 
 						var x = document.getElementById("hashList").value;
-						stream  = stream + ' ' + x;
-						alert(stream);
-
+						//if(!(y = x.match(/a)))
+							alert("Hash tag should contain #");
+						//else
+							stream  = stream + '\t' + x;
+							//this stream need to save to RDB
+							document.getElementById("hashList").value = "";
 						$('#result').html(stream);
-
 						//start ajax request
 						$.ajax({
 							url:"data3.json",
