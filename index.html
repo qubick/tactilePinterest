@@ -157,9 +157,9 @@
 			</section>
 
 			<nav class="nav">
-				<a href="/" class="active">Home</a>
-				<a href="/" class="">Tweets</a>
-				<a href="www.twitter.com" target="section id='intro'" class="">Widget</a>
+				<a href="content" class="active">Home</a>
+				<a href="intro" class="">Tweets</a>
+				<a href="widget" target="section id='intro'" class="">Widget</a>
 			</nav>
 			</header>
 		</section>
@@ -192,27 +192,31 @@
 					// 	alert("inside btn click event");
 
 						var x = document.getElementById("hashList").value;
-						//if(!(y = x.match(/a)))
-						alert("Hash tag should contain #");
+						y = x.match(/#/g);
+						alert(y);
 						//else
 						stream  = stream + '\t' + x;
 							//this stream need to save to RDB
 						if(tagCnt === 0){
 								$('#first_h3').html(x);
-							//data from DB
-							//$('first_twt_field').html(data);
+								//data from DB
+								var string0 = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+							$('#first_twt').html(string0);
 						} else if(tagCnt === 1) {
 								$('#second_h3').html(x);
 							//data from DB
-							//$('second_twt_field').html(data);	
+							var string1 = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).";
+							$('#second_twt').html(string1);	
 						} else if(tagCnt === 2) {
 								$('#third_h3').html(x);
-							//data from DB
-							//$('third_twt_field').html(data);
+								//data from DB
+								var string2 = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 'de Finibus Bonorum et Malorum' (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, 'Lorem ipsum dolor sit amet..', comes from a line in section 1.10.32.";
+							$('#third_twt').html(string2);
 						} else if(tagCnt === 3) {
 								$('#fourth_h3').html(x);
 								//data from DB
-								//$('second_twt_field').html(data);
+								var string3 = "There are many varia:tions of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.";
+								$('#fourth_twt').html(string3);
 						}
 						//clear filed
 						document.getElementById("hashList").value = "";
@@ -276,39 +280,25 @@
 				<section id="web-applications">
 				<!-- h3>#3D_printing</h3-->
 				<h3 id="first_h3"></h3>
-						<p id="first_twt_field">
-						<!-- php insert concatenated string-->
-							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-						</p>
+					<p id="first_twt"></p>
 				</section>
 				<section id="apis">
 					<h3 id="second_h3"></h3>
-					<p id="second_twt_field">
-						It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-					</p>
+						<p id="second_twt"></p>
 				</section>
 				<section id="performance">
 					<h3 id="third_h3"></h3>
-					<p id="third_twt_field">
-						Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-					</p>
+						<p id="third_twt"> </p>
 				</section>
 				<section id="book">
 					<h3 id="fourth_h3"></h3>
-					<p id="fourth_twt_filed">
-						There are many varia:tions of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
-					</p>
+					<p id="fourth_twt"></p>
 				</section>
 		</section>
 	<center>	
-		<table>
-			enrolled tag list (click x to remove - bootstrap)<br>
-			input hashtag or search keyword (enroll tags)
-			vertical section distribution - twits according to tags
-			<br><br>
-	</table>
 
 	<!-- create tactile related list, add widget -->
+	<section id="widget">
 		<a class="twitter-timeline" 
 			data-dnt="true" 
 			href="https://twitter.com/iamqubick/printing3d" 
@@ -347,7 +337,7 @@
 						  }
 				}(document,"script","twitter-wjs");
 	 	</script>
-
+	</section>
 
 		<br>
 		<a data-pin-do="embedBoard" 
