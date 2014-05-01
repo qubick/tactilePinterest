@@ -159,7 +159,7 @@
 			<nav class="nav">
 				<a href="#content" class="active">Home</a>
 				<a href="#intro" class="">Tweets</a>
-				<a href="#widget" target="section id='intro'" class="">Widget</a>
+				<a href="#twt-widget" class="">Widget</a>
 			</nav>
 			</header>
 		</section>
@@ -254,27 +254,6 @@
 		</p>
 		</section>
 
-		<?php
-			//connect to the db
-
-			$host = "localhost";
-			$user = "postgres";
-			$pass = "postgres";
-			$db = "tactile";
-
-			$con = pg_connect("host=$host dbname=$db user=$user password=$pass);
-				or die("Could not connect to server\n");
-
-			$query = "SELECT VERSION()";
-			$rs = pg_query($con, $query) 
-				or die("Cannot execute query: $query\n");
-			$row = pg_fetch_row($rs);
-
-			echo $row[0] . "\n";
-			pg_close($con);
-
-		?>
-
 		<section id="intro">
 			<div class="content">
 			<div id="boxes" class="clearfix">
@@ -298,15 +277,14 @@
 		</section>
 	<center>	
 
-	<!-- create tactile related list, add widget -->
-	<section id="widget">
+	<section id="twt-widget">
 		<a class="twitter-timeline" 
 			data-dnt="true" 
 			href="https://twitter.com/iamqubick/printing3d" 
 			data-widget-id="451050605256007680">Tweets from https://twotter.com/iamqubick/printing3d</a>
  
  		<script>
-	  	//timeline for 3d printing list
+	  	//customized timeline widget for 3d printing list
 			!function(d,s,id){
 				var js,fjs = d.getElementsByTagName(s)[0],
 					  		p = /^http:/.test(d.location)?'http':'https';
@@ -326,7 +304,7 @@
 			data-widget-id="451052939755278336">Tweets about #tactile</a>
 
  		<script>
-		//timeline for #tactile hashtag
+		//customized timeline for #tactile hashtag
 			!function(d,s,id){
 				var js,fjs = d.getElementsByTagName(s)[0],
 					  		p = /^http:/.test(d.location)?'http':'https';
