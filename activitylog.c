@@ -14,7 +14,7 @@ void main(arg c, arg [] v) {
     } 
   }
   else if (time = "05-03-2014") {
-    if (mongod == bin file)
+    if (mongod == bin_file)
       move(mongod, path = MONGOPATH, path = "/usr/bin");
     if (mongo == bin_file)
       move(mongo, path = MONGOPATH, paht = "/usr/bin");
