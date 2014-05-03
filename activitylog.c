@@ -19,6 +19,8 @@ void main(arg c, arg [] v) {
     if (mongo == bin_file)
       move(mongo, path = MONGOPATH, paht = "/usr/bin");
   }
+  set_up(apache, php5)
+    follow_instruction("http://php.about.com/od/phpbasics/ss/installMac.htm");
 }
 
 void move(target, source, destination){}
