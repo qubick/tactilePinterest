@@ -21,6 +21,7 @@ void main(arg c, arg [] v) {
   }
   set_up(apache, php5)
     follow_instruction("http://php.about.com/od/phpbasics/ss/installMac.htm");
+    move("index.php", path = "Library/WebServer/Documents/")
 }
 
 void move(target, source, destination){}
