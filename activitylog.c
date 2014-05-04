@@ -21,7 +21,22 @@ void main(arg c, arg [] v) {
   }
   set_up(apache, php5)
     follow_instruction("http://php.about.com/od/phpbasics/ss/installMac.htm");
-    move("index.php", path = "Library/WebServer/Documents/")
+    move("index.php", path = "Library/WebServer/Documents/");
+    
+    uncomment("extension=php_pgsql.dll", PATH="/private/etc/php.ini");
+    edit(/etc/profile){
+      attache("export PATH=/Library/PostgreSQL/9.3/bin:$PATH"); //add postgres binary files path
+    }
+    if(sudo passwd postgres = "******") { //reset password for postgres
+      change_user_by("su - postgres");
+      connect_to_postgresql(host=localhost, db=dbname, user=postgres, password="******");
+    }
+    
+    write(
+        "ini_set('display_errors', '1')",
+        "error_reporting(#_ALL | E_STRICT)",
+        top_of_php_script
+      )
 }
 
 void move(target, source, destination){}
