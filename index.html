@@ -160,6 +160,7 @@
 				<a href="#content" class="active">Home</a>
 				<a href="#intro" class="">Tweets</a>
 				<a href="#twt-widget" class="">Widget</a>
+				<a herf="http://tweeter.com" target="_blank" class="">Timeline</a>
 			</nav>
 			</header>
 		</section>
@@ -169,13 +170,22 @@
 			<br>
 			<p>
 			<input type="text" id="hashList" placeholder="type hashtags" onfocus="this.placeholder = ''" onblur="this.placeholder = 'enter your text'" />
-			<input type="button" value="Add Hashs" class="button" id="btn">
+			<input type="submit" value="Add Hashs" class="button" id="btn">
 
 			<?php
-				$conn = pg_pconnect("dbname=tactile");
+				ini_set('display_errors', '1');
+				error_reporting(E_ALL | E_STRICT);
 
-				$query = "insert tag and the time now";
-				pg_query($conn, $query);
+				$host = "localhost";
+				$port = 5432;
+				$db = "tactile";
+				$user = "postgres";
+				$passwd = "akf493";
+				
+				$conn = pg_pconnect("host=$host port=$port dbname=$db user=$user password=$passwd");
+
+				//$query = "insert tag and the time now";
+				//pg_query($conn, $query);
 			?>
 
 			<br>
