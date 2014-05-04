@@ -28,7 +28,7 @@ void main(arg c, arg [] v) {
       attache("export PATH=/Library/PostgreSQL/9.3/bin:$PATH"); //add postgres binary files path
     }
     if(sudo passwd postgres = "******") { //reset password for postgres
-      change_user_by("su - postgres");
+      change_user_by("su - postgres"); //CLI connect to the psql
       connect_to_postgresql(host=localhost, db=dbname, user=postgres, password="******");
     }
     
