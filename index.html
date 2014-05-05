@@ -204,7 +204,7 @@
 					'@B3dge By @taylorboswelldesign ! "Our 3D printed business card holder. <b> #makerbot </b>#replicator @azizahsham 5 Pcs 3D Printer... http://onlineshoppersmart.com/5-pcs-3d-printer #04mm <b>#MakerBot </b> @CREAT3Dprinters  Our beautiful #3dprinted vases looking great @GDLive_UK <b>#makerbot</b> replicator 5th Gen #thingiverse thing:30889 pic.twitter.com/3dYoIPS6YZ @3DRegan What is @iMakrStore and @MyMiniFactorys <b>#Makerbot</b> printing in the #Northface window in Kingston? Go and take a look! @CREAT3Dprinters We love our #3dprinted mini lamp. Thingiverse thing 27062 #ultimaker2 <b>#makerbot</b> rep2 #colorfabb signal yellow'
 					];
 
-					for(var i=0; i<4; i++){
+					for(var i=0; i<5; i++){
 						if(str[i].match(/#3dprinting/g)){
 						str0 = str[i];
 						}
@@ -214,19 +214,17 @@
 						if(str[i].match(/#digitalfabrication/g)){
 						str2 = str[i];
 						}
-						if(str[i].match(/#thing/g)){
+						if(str[i].match(/#Thingiverse/g)){
 							str3 = str[i];
 						} 
-						if(str[i].match(/#makerbot/g)){
+						if(str[i].match(/#Makerbot/g)){
 							str4 = str[i];
 						}
 					}
 
 					//after DOM is ready, attach button click event
 					$("#btn").click(function(){
-					// 	alert("inside btn click event");
 
-						//`alert(str3);
 						var x = document.getElementById("hashList").value;
 						if(!(y = x.match(/#(.)*\b/g))){ //regex for 
 							alert("Hashtag should be followed by special character #");
@@ -234,34 +232,23 @@
 							stream  = stream + '\t' + x;
 							//this stream need to save to RDB
 							var tmp = x;
+							
 							if(tmp == "#3dprinting") {
 								displayStr = str0;
-								tagCnt++;
-							} 
-							else if (tmp == "#tactile") {
+							} else if (tmp == "#tactile") {
 								displayStr = str1;
-								tagCnt++;
-							}
-							else if (tmp == "#digitalfabrication") {
+							} else if (tmp == "#digitalfabrication") {
 								displayStr = str2;
-								tagCnt++;
-							}
-							else if (tmp == "#thingiverse") {
+							} else if (tmp == "#thingiverse") {
 								displayStr = str3;
-								alert(displayStr);
-								tagCnt++;
-							}
-							else if (tmp == "#makerbot") {
+							} else if (tmp == "#makerbot") {
 								displayStr = str4;
-								tagCnt++;
-							}
-							else {
+							} else {
 								alert("No search result");
 								displayStr = '';
 								tmp = '';
-								tagCnt++;
 							}
-
+								tagCnt++;
 
 							if(tagCnt === 1){
 								$('#first_h3').html(tmp);
