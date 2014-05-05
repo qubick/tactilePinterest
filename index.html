@@ -196,9 +196,27 @@
 			//		alert("DOM ready");
 					var stream = "";
 					var tagCnt = 0;
-  
+					var str = ['@DrWoohoo  The Mesh-Mould project explores robotically fabricated loadbearing structures. http://vimeo.com/78897355  <b>#digitalfabrication</b> @mauhaus1  See construction of "Packed Pavilion" on Vimeo http://vimeo.com/17987757  #Vimeo #eth #caad <b>#digitalfabrication</b> #packed #pavilion #creativity @pineapplesita  Carbon fiber in the sun. #carbonfiber <b>#digitalfabrication</b> #fiberwavepavilion #architectureschool @ S.… http://instagram.com/p/ngzrGXBmds/ @sam_ng_ Digital Fabrication Studio course at Media Lab Helsinki <b> #DigitalFabrication</b>, #Lectures https://noppa.aalto.fi/noppa/kurssi/25438/luennot …',
+					'cabyte The potential of<b> #3DPrinting</b> #technology is endless, restricted only by the limits of our imagination. http://buff.ly/1q5hQBf  @designboom similar to <b>#3Dprinting</b> the @lixpen melts + cools colored plastic so you can doodle in the air @calesous Leapfrogging: Harvard session examines <b>3Dprinting</b>, nanotech & synthetic biology in development http://bit.ly/1mhhHVh @FastCoCreate To promote their new album, @broken_bells has released <b>#3Dprinting</b> blueprints. (Now all you need is a printer.) http://f-st.co/J2hH6xP @designboom worlds smallest <b>#3Dprinting</b> pen @lixpen http://www.designboom.com/technology/lix-3d-printing-pen-05-01-2014 … <b>#3dprinting</b> #thefutureisnow pic.twitter.com/0YGBSeIfsmi ...',
+					'@Acuity_Design @SoniaBoue btw, I am in Oxford on 19th June to talk tactile art. Free afterwards in afternoon.; @@Craftori Daisy Flower <b>#tactile</b> Textured Sunny Yellow Painting http://www.etsy.com/listing/159068; @ClarissaClemens "..Quickened deliberate tactile teases~Peak & tweak erotic squeezes.." @industrialdea #44: ComplianceSigns Acrylic ADA Restroom sign set, 9 x 6 inch <b>#tactile</b> + Braille Blue: ComplianceSigns Acrylic'];
+
+					for(var i=0; i<2; i++){
+						if(str[i].match(/3dprinting/g)){
+						str0 = str[i];
+						}
+					}
+					for(var j=0; j<3; j++){
+						if(str[j].match(/tactile/g)){
+						str1 = str[j];
+						}
+					}
+					for(var k=0; k<3; k++){
+						if(str[k].match(/digitalfabrication/g)){
+						str2 = str[k];
+						}
+					}
 					//after DOM is ready, attach button click event
-					$('#btn').click(function(){
+					$("#btn").click(function(){
 					// 	alert("inside btn click event");
 
 						var x = document.getElementById("hashList").value;
@@ -210,23 +228,19 @@
 							if(tagCnt === 0){
 								$('#first_h3').html(x);
 								//data from DB
-								var string0 = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
-								$('#first_twt').html(string0);
+								$('#first_twt').html(str0);
 							} else if(tagCnt === 1) {
 								$('#second_h3').html(x);
 								//data from DB
-								var string1 = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).";
-								$('#second_twt').html(string1);	
+								$('#second_twt').html(str1);	
 							} else if(tagCnt === 2) {
 								$('#third_h3').html(x);
 								//data from DB
-								var string2 = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 'de Finibus Bonorum et Malorum' (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, 'Lorem ipsum dolor sit amet..', comes from a line in section 1.10.32.";
-								$('#third_twt').html(string2);
+								$('#third_twt').html(str2);
 							} else if(tagCnt === 3) {
 								$('#fourth_h3').html(x);
 								//data from DB
-								var string3 = "There are many varia:tions of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.";
-								$('#fourth_twt').html(string3);
+								$('#fourth_twt').html(str3);
 							}
 						//clear filed
 							document.getElementById("hashList").value = "";
