@@ -200,27 +200,25 @@
 					var str = ['@DrWoohoo  The Mesh-Mould project explores robotically fabricated loadbearing structures. http://vimeo.com/78897355  <b>#digitalfabrication</b> @mauhaus1  See construction of "Packed Pavilion" on Vimeo http://vimeo.com/17987757  #Vimeo #eth #caad <b>#digitalfabrication</b> #packed #pavilion #creativity @pineapplesita  Carbon fiber in the sun. #carbonfiber <b>#digitalfabrication</b> #fiberwavepavilion #architectureschool @ S.… http://instagram.com/p/ngzrGXBmds/ @sam_ng_ Digital Fabrication Studio course at Media Lab Helsinki <b> #DigitalFabrication</b>, #Lectures https://noppa.aalto.fi/noppa/kurssi/25438 ...',
 					'cabyte The potential of<b> #3DPrinting</b> #technology is endless, restricted only by the limits of our imagination. http://buff.ly/1q5hQBf  @designboom similar to <b>#3Dprinting</b> the @lixpen melts + cools colored plastic so you can doodle in the air @calesous Leapfrogging: Harvard session examines <b>3Dprinting</b>, nanotech & synthetic biology in development http://bit.ly/1mhhHVh @FastCoCreate To promote their new album, @broken_bells has released <b>#3Dprinting</b> blueprints. (Now all you need is a printer.) http://f-st.co/J2hH6xP @designboom worlds smallest <b>#3Dprinting</b> pen @lixpen http://www.designboom.com/technology/lix-3d-printing-pen-05-01-2014 … <b>#3dprinting</b> #thefutureisnow pic.twitter.com/0YGBSeIfsmi ...',
 					'@Acuity_Design @SoniaBoue btw, I am in Oxford on 19th June to talk tactile art. Free afterwards in afternoon.; @@Craftori Daisy Flower <b>#tactile</b> Textured Sunny Yellow Painting http://www.etsy.com/listing/159068; @ClarissaClemens "..Quickened deliberate tactile teases~Peak & tweak erotic squeezes.." @industrialdea #44: ComplianceSigns Acrylic ADA Restroom sign set, 9 x 6 inch <b>#tactile</b> + Braille Blue: ComplianceSigns Acrylic ...',
-					'@dizingof  @PeterLavan Whos asking you or @fabbaloo? :-) The answer should be clear by now.. since the <b>#thingiverse</b> "incident" http://www.itworld.com/it-management/365866/thief-3d-printing-world-may-not-be-who-you-think … @CREAT3Dprinters Our beautiful #3dprinted vases looking great @GDLive_UK makerbot replicator 5th Gen <b> #thingiverse </b> thing:30889 pic.twitter.com/3dYoIPS6YZ @blacklight1880 I made one! Emergency Cello Bridge  from <b>#Thingiverse</b> http://www.thingiverse.com/thing:285454  pic.twitter.com/DdkfdcLfDt @SyxxSense I made one! Fish Bone Wall Hanger from <b>#Thingiverse</b> http://www.thingiverse.com/thing:232464  pic.twitter.com/FCRlEymOCN @RAMTechRob  I made one! League of Legends - Logo Badge from <b>#Thingiverse</b> http://www.thingiverse.com/thing:32280  pic.twitter.com/BLaegWK6IB ...' 
+					'@dizingof  @PeterLavan Whos asking you or @fabbaloo? :-) The answer should be clear by now.. since the <b>#thingiverse</b> "incident" http://www.itworld.com/it-management/365866/thief-3d-printing-world-may-not-be-who-you-think … @CREAT3Dprinters Our beautiful #3dprinted vases looking great @GDLive_UK makerbot replicator 5th Gen <b> #thingiverse </b> thing:30889 pic.twitter.com/3dYoIPS6YZ @blacklight1880 I made one! Emergency Cello Bridge  from <b>#Thingiverse</b> http://www.thingiverse.com/thing:285454  pic.twitter.com/DdkfdcLfDt @SyxxSense I made one! Fish Bone Wall Hanger from <b>#Thingiverse</b> http://www.thingiverse.com/thing:232464  pic.twitter.com/FCRlEymOCN @RAMTechRob  I made one! League of Legends - Logo Badge from <b>#Thingiverse</b> http://www.thingiverse.com/thing:32280  pic.twitter.com/BLaegWK6IB ...', 
+					'@B3dge By @taylorboswelldesign ! "Our 3D printed business card holder. <b> #makerbot </b>#replicator @azizahsham 5 Pcs 3D Printer... http://onlineshoppersmart.com/5-pcs-3d-printer #04mm <b>#MakerBot </b> @CREAT3Dprinters  Our beautiful #3dprinted vases looking great @GDLive_UK <b>#makerbot</b> replicator 5th Gen #thingiverse thing:30889 pic.twitter.com/3dYoIPS6YZ @3DRegan What is @iMakrStore and @MyMiniFactorys <b>#Makerbot</b> printing in the #Northface window in Kingston? Go and take a look! @CREAT3Dprinters We love our #3dprinted mini lamp. Thingiverse thing 27062 #ultimaker2 <b>#makerbot</b> rep2 #colorfabb signal yellow'
 					];
 
-					for(var i=0; i<2; i++){
-						if(str[i].match(/3dprinting/g)){
+					for(var i=0; i<4; i++){
+						if(str[i].match(/#3dprinting/g)){
 						str0 = str[i];
 						}
-					}
-					for(var j=0; j<3; j++){
-						if(str[j].match(/tactile/g)){
-						str1 = str[j];
+						if(str[i].match(/#tactile/g)){
+						str1 = str[i];
 						}
-					}
-					for(var k=0; k<3; k++){
-						if(str[k].match(/digitalfabrication/g)){
-						str2 = str[k];
+						if(str[i].match(/#digitalfabrication/g)){
+						str2 = str[i];
 						}
-					}
-					for (var l=0; l<3; l++){
-						if(str[k].match(/Thingiverse/g)){
-							str3 = str[k];
+						if(str[i].match(/#thing/g)){
+							str3 = str[i];
+						} 
+						if(str[i].match(/#makerbot/g)){
+							str4 = str[i];
 						}
 					}
 
@@ -228,6 +226,7 @@
 					$("#btn").click(function(){
 					// 	alert("inside btn click event");
 
+						//`alert(str3);
 						var x = document.getElementById("hashList").value;
 						if(!(y = x.match(/#(.)*\b/g))){ //regex for 
 							alert("Hashtag should be followed by special character #");
@@ -238,22 +237,29 @@
 							if(tmp == "#3dprinting") {
 								displayStr = str0;
 								tagCnt++;
-								} 
+							} 
 							else if (tmp == "#tactile") {
 								displayStr = str1;
 								tagCnt++;
-								}
+							}
 							else if (tmp == "#digitalfabrication") {
 								displayStr = str2;
 								tagCnt++;
-								}
+							}
 							else if (tmp == "#thingiverse") {
 								displayStr = str3;
+								alert(displayStr);
 								tagCnt++;
-								}
+							}
+							else if (tmp == "#makerbot") {
+								displayStr = str4;
+								tagCnt++;
+							}
 							else {
 								alert("No search result");
-								tmp = x;
+								displayStr = '';
+								tmp = '';
+								tagCnt++;
 							}
 
 
@@ -269,7 +275,13 @@
 							} else if(tagCnt === 4) {
 								$('#fourth_h3').html(tmp);
 								$('#fourth_twt').html(displayStr);
+							} else if(tagCnt === 5) {
+								$('#fifth_h3').html(tmp);
+								$('#fifth_twt').html(displayStr);
 							}
+
+							if (displayStr == '' && tmp == '')
+								tagCnt--;
 						//clear filed
 							document.getElementById("hashList").value = "";
 
@@ -324,6 +336,10 @@
 				<section id="book">
 					<h3 id="fourth_h3"></h3>
 					<p id="fourth_twt"></p>
+				</section>
+				<section>
+					<h3 id="fifth_h3"></h3>
+					<p id="fifth_twt"></p>
 				</section>
 		</section>
 	<center>	
