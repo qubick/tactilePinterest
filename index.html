@@ -198,7 +198,9 @@
 					var tagCnt = 0;
 					var str = ['@DrWoohoo  The Mesh-Mould project explores robotically fabricated loadbearing structures. http://vimeo.com/78897355  <b>#digitalfabrication</b> @mauhaus1  See construction of "Packed Pavilion" on Vimeo http://vimeo.com/17987757  #Vimeo #eth #caad <b>#digitalfabrication</b> #packed #pavilion #creativity @pineapplesita  Carbon fiber in the sun. #carbonfiber <b>#digitalfabrication</b> #fiberwavepavilion #architectureschool @ S.… http://instagram.com/p/ngzrGXBmds/ @sam_ng_ Digital Fabrication Studio course at Media Lab Helsinki <b> #DigitalFabrication</b>, #Lectures https://noppa.aalto.fi/noppa/kurssi/25438/luennot …',
 					'cabyte The potential of<b> #3DPrinting</b> #technology is endless, restricted only by the limits of our imagination. http://buff.ly/1q5hQBf  @designboom similar to <b>#3Dprinting</b> the @lixpen melts + cools colored plastic so you can doodle in the air @calesous Leapfrogging: Harvard session examines <b>3Dprinting</b>, nanotech & synthetic biology in development http://bit.ly/1mhhHVh @FastCoCreate To promote their new album, @broken_bells has released <b>#3Dprinting</b> blueprints. (Now all you need is a printer.) http://f-st.co/J2hH6xP @designboom worlds smallest <b>#3Dprinting</b> pen @lixpen http://www.designboom.com/technology/lix-3d-printing-pen-05-01-2014 … <b>#3dprinting</b> #thefutureisnow pic.twitter.com/0YGBSeIfsmi ...',
-					'@Acuity_Design @SoniaBoue btw, I am in Oxford on 19th June to talk tactile art. Free afterwards in afternoon.; @@Craftori Daisy Flower <b>#tactile</b> Textured Sunny Yellow Painting http://www.etsy.com/listing/159068; @ClarissaClemens "..Quickened deliberate tactile teases~Peak & tweak erotic squeezes.." @industrialdea #44: ComplianceSigns Acrylic ADA Restroom sign set, 9 x 6 inch <b>#tactile</b> + Braille Blue: ComplianceSigns Acrylic'];
+					'@Acuity_Design @SoniaBoue btw, I am in Oxford on 19th June to talk tactile art. Free afterwards in afternoon.; @@Craftori Daisy Flower <b>#tactile</b> Textured Sunny Yellow Painting http://www.etsy.com/listing/159068; @ClarissaClemens "..Quickened deliberate tactile teases~Peak & tweak erotic squeezes.." @industrialdea #44: ComplianceSigns Acrylic ADA Restroom sign set, 9 x 6 inch <b>#tactile</b> + Braille Blue: ComplianceSigns Acrylic',
+					'@dizingof  @PeterLavan Whos asking you or @fabbaloo? :-) The answer should be clear by now.. since the <b>#thingiverse</b> "incident" http://www.itworld.com/it-management/365866/thief-3d-printing-world-may-not-be-who-you-think … @CREAT3Dprinters Our beautiful #3dprinted vases looking great @GDLive_UK makerbot replicator 5th Gen <b> #thingiverse </b> thing:30889 pic.twitter.com/3dYoIPS6YZ @blacklight1880 I made one! Emergency Cello Bridge  from <b>#Thingiverse</b> http://www.thingiverse.com/thing:285454  pic.twitter.com/DdkfdcLfDt @SyxxSense I made one! Fish Bone Wall Hanger from <b>#Thingiverse</b> http://www.thingiverse.com/thing:232464  pic.twitter.com/FCRlEymOCN @RAMTechRob  I made one! League of Legends - Logo Badge from <b>#Thingiverse</b> http://www.thingiverse.com/thing:32280  pic.twitter.com/BLaegWK6IB
+					'];
 
 					for(var i=0; i<2; i++){
 						if(str[i].match(/3dprinting/g)){
@@ -213,6 +215,9 @@
 					for(var k=0; k<3; k++){
 						if(str[k].match(/digitalfabrication/g)){
 						str2 = str[k];
+						}
+						if(str[k].match(/Thingiverse/g)){
+							str3 = str[k];
 						}
 					}
 					//after DOM is ready, attach button click event
