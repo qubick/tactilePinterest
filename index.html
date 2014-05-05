@@ -172,6 +172,8 @@
 			<input type="text" id="hashList" placeholder="type hashtags" onfocus="this.placeholder = ''" onblur="this.placeholder = 'enter your text'" />
 			<input type="submit" value="Add Hashs" class="button" id="btn">
 
+			<input type="submit" value="Clear Hashs" class="button" id="btn2">
+
 			<?php
 				ini_set('display_errors', '1');
 				error_reporting(E_ALL | E_STRICT);
@@ -224,7 +226,6 @@
 
 					//after DOM is ready, attach button click event
 					$("#btn").click(function(){
-
 						var x = document.getElementById("hashList").value;
 						if(!(y = x.match(/#(.)*\b/g))){ //regex for 
 							alert("Hashtag should be followed by special character #");
@@ -298,8 +299,29 @@
 								}); //end of each
 							} // end of success callback function()	
 					}); //end of $.ajax
+				}); //end of btn click
+		
+				$("#btn2").click(function(){
+
+					stream = '';
+					tagCnt = 0;
+					displayStr = '';
+
+					$('#result').html('');
+
+					$('#first_h3').html('');
+					$('#second_h3').html('');
+					$('#third_h3').html('');
+					$('#fourth_h3').html('');
+					$('#fifth_h3').html('');
+
+					$('#first_twt').html('');
+					$('#second_twt').html('');
+					$('#third_twt').html('');
+					$('#fourth_twt').html('');
+					$('#fifth_twt').html('');
 				});
-			});
+			});//end of doc ready
  		</script>
 		</p>
 		</section>
