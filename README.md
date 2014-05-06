@@ -1,4 +1,5 @@
 tactilePinterest
 ================
 
-See initial design.png file to view web application concept
+See "initial design.png" to view web application prototype
+See "activitylog.c" to view project history
