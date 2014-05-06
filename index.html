@@ -169,7 +169,7 @@
 		<!-- a href="data3.json" target="_blank"> Open JSON file</a -->
 			<br>
 			<p>
-			<input type="text" id="hashList" placeholder="type hashtags" onfocus="this.placeholder = ''" onblur="this.placeholder = 'enter your text'" />
+			<input type="text" name="hahs" id="hashList" placeholder="type hashtags" onfocus="this.placeholder = ''" onblur="this.placeholder = 'enter your text'" />
 			<input type="submit" value="Add Hashs" class="button" id="btn">
 
 			<input type="submit" value="Clear Hashs" class="button" id="btn2">
@@ -186,8 +186,9 @@
 				
 				$conn = pg_pconnect("host=$host port=$port dbname=$db user=$user password=$passwd");
 
-				//$query = "insert tag and the time now";
-				//pg_query($conn, $query);
+				$tag = $_POST['hash'];
+				$query = "insert into hashtags " . $tag . ';';
+				pg_query($conn, $query);
 			?>
 
 			<br>
@@ -293,7 +294,22 @@
 										var res = tags[i].match(a/tag); //matching regexs
 										if(res){
 							//				$('#result').html('user: ' + this.name + '<br />keywords: ' + this.keywords);
-											$('#results').html(res);
+										$('#results').html(res);
+
+										var MongoClient = require('mongodb').MongoClient,
+											format = require('util').format;
+
+											MongoClient.connect('mognodb://127.0.0.1:27017/test', function(err, db){
+												if (err) throw err;
+
+												var collection = db.collection('tweets');
+												collection.insert({"hash":this.hashs, "mentions":this.mentions, "user":this.user}, function(err, docs){
+													db.close();
+													});
+												});
+										var query = "insert into hashs values (" + this.hashs + ", " + this.mentions + ", " + this.user + ");"; 
+										$().html("<?php $query($conn,",query, "?>");
+
 										} //end of if
 									} //end of for	
 								}); //end of each
