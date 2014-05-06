@@ -228,7 +228,7 @@
 					//after DOM is ready, attach button click event
 					$("#btn").click(function(){
 						var x = document.getElementById("hashList").value;
-						if(!(y = x.match(/#(.)*\b/g))){ //regex for 
+						if(!(y = x.match(/#(.)*\b/g))){ //regex for hashtag validation
 							alert("Hashtag should be followed by special character #");
 						} else {
 							stream  = stream + '\t' + x;
