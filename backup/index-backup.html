@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>3D tactile book twitter information</title>
+		<style type="text/css">
+
+		* {
+		
+		}
+		body {
+			font:400 14px/1.6 "Open Sans", sans-serif;
+			font-family: "Open Sans", sans-serif;
+			font-size: 14px;
+			font-style: normal;
+			font-variant: normal;
+			font-weight: 400;
+			line-height: 1.6;
+			color: #666;
+	}
+		h1, h2, h3 {
+			margin: 5px 0;
+			font-weight: normal;
+			color: #353535;
+			-webkit-fontsmoothing: anthialiased;
+	}
+		p {
+			margin: 20px 0;		
+	}
+		p code {
+			background: #efefef;
+			border: 1px solid #eaeaea;
+			font-family: monaco, monospace;
+			font-size: .75em;
+			padding: 2px 8px;
+			-webkit-border-radius: 3px;
+		}
+		section section p {
+			width: 60%;
+	}
+		h3 {
+			background: /* url(/images/hr.png) */ top center no-repeat;
+			margin-top: 40px;
+			padding-top: 50px;
+			padding-bottom: 5px;
+			font-weight: bold;
+		}
+		/* links */
+			a {
+				color: #259dff;
+				text-decoration: none;
+		}
+			a:hover {
+				text-decoration: underline;
+		}
+
+		/* clear fix */
+			.clearfix:after {
+				content: ".";
+				display: block;
+				clear: both;
+				visibility: hidden;
+				line-height: 0;
+				height: 0;
+		}
+			.clearfix {
+				display: inline-block;
+		}
+			html[xmlns] .clearfix{
+				display: block;
+		}
+			*html .clearfix {
+			height: 1%;
+		}
+			.title {
+				display: block;
+				font: 60px "Helvetica Neue", Helvetica, Arial, sans-serif; 
+				font-weight: 100;
+				color: #353535;
+				width: 100%;
+		}
+			.description {
+				position: relative;
+				top: -5px;
+				font: 100 60px "Helvetica Neue", Helvetica, Arial, sans-serif;
+				color: #cecece;
+				line-height: .80;
+		}
+			.nav {
+				position: fixed;
+				top: 20px;
+				right: 15px;
+				z-index: 100;
+		}
+			.nav a{
+				margin: 0 5px;
+				padding-right: 15px;
+				border-right: 1px dotted #eee;
+		}
+			#content {
+				margin-left: 80px;
+				width: 900px;
+				margin-bottom: 80px;
+		}
+			#logo em {
+				font-style: normal;
+				font-weight: 100;
+				font-size: 9px;
+				color: #999;
+				margin-left: 5px;
+		}
+			#logo a:hover {
+				text-decoration: none;
+				color: #858585;
+		}
+
+		/* boxes for separate blocks */
+			#boxes {
+				background: /*url(/images/hr.png)*/ top center no-repeat; */
+				margin-left: 50px;
+				padding-top: 50px;
+				padding-bottom: 50px;
+				font-size: 12px;	
+		}
+			#boxes section {
+				width: 180px;
+				margin: 0 25px;
+				float: left; /* display boxes horizontally */
+				min-height: 200px;
+		}
+			#boxes h3{
+				background: none;
+				margin-top: 0;
+				padding-top: 0;
+		}
+			#boxes section p {
+				width: 100%;
+				margin-top: 5px;
+				margin-bottom: 20px;
+			}
+	</style>
+
+	</head>
+
+	<body>
+		<section id="content">
+		<header>
+			<section id="logo">
+			<a href="http://tactilepicturebooks.org" class="title" target="new">Tactile Book</a>
+			<br>
+				<span class="description">
+						web aplication <br>
+						collects search term and <br>
+						retrieves related information<br> 
+						from
+					<a href="http://twitter.com" target="new"> twitter </a>
+				</span>
+			</section>
+
+			<nav class="nav">
+				<a href="#content" class="active">Home</a>
+				<a href="#intro" class="">Tweets</a>
+				<a href="#twt-widget" class="">Widget</a>
+				<a herf="http://tweeter.com" target="_blank" class="">Timeline</a>
+			</nav>
+			</header>
+		</section>
+
+		<section id="json">
+		<!-- a href="data3.json" target="_blank"> Open JSON file</a -->
+			<br>
+			<p>
+			<input type="text" id="hashList" placeholder="type hashtags" onfocus="this.placeholder = ''" onblur="this.placeholder = 'enter your text'" />
+			<input type="submit" value="Add Hashs" class="button" id="btn">
+
+			<?php
+				ini_set('display_errors', '1');
+				error_reporting(E_ALL | E_STRICT);
+
+				$host = "localhost";
+				$port = 5432;
+				$db = "tactile";
+				$user = "postgres";
+				$passwd = "akf493";
+				
+				$conn = pg_pconnect("host=$host port=$port dbname=$db user=$user password=$passwd");
+
+				//$query = "insert tag and the time now";
+				//pg_query($conn, $query);
+			?>
+
+			<br>
+			<span id="result"></span>
+			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+			<script type="text/javascript">
+				$(document).ready(function(){
+			//		alert("DOM ready");
+					var stream = '';
+					var tagCnt = 0;
+					var displayStr = '';
+					var str = ['@DrWoohoo  The Mesh-Mould project explores robotically fabricated loadbearing structures. http://vimeo.com/78897355  <b>#digitalfabrication</b> @mauhaus1  See construction of "Packed Pavilion" on Vimeo http://vimeo.com/17987757  #Vimeo #eth #caad <b>#digitalfabrication</b> #packed #pavilion #creativity @pineapplesita  Carbon fiber in the sun. #carbonfiber <b>#digitalfabrication</b> #fiberwavepavilion #architectureschool @ S.… http://instagram.com/p/ngzrGXBmds/ @sam_ng_ Digital Fabrication Studio course at Media Lab Helsinki <b> #DigitalFabrication</b>, #Lectures https://noppa.aalto.fi/noppa/kurssi/25438 ...',
+					'cabyte The potential of<b> #3DPrinting</b> #technology is endless, restricted only by the limits of our imagination. http://buff.ly/1q5hQBf  @designboom similar to <b>#3Dprinting</b> the @lixpen melts + cools colored plastic so you can doodle in the air @calesous Leapfrogging: Harvard session examines <b>3Dprinting</b>, nanotech & synthetic biology in development http://bit.ly/1mhhHVh @FastCoCreate To promote their new album, @broken_bells has released <b>#3Dprinting</b> blueprints. (Now all you need is a printer.) http://f-st.co/J2hH6xP @designboom worlds smallest <b>#3Dprinting</b> pen @lixpen http://www.designboom.com/technology/lix-3d-printing-pen-05-01-2014 … <b>#3dprinting</b> #thefutureisnow pic.twitter.com/0YGBSeIfsmi ...',
+					'@Acuity_Design @SoniaBoue btw, I am in Oxford on 19th June to talk tactile art. Free afterwards in afternoon.; @@Craftori Daisy Flower <b>#tactile</b> Textured Sunny Yellow Painting http://www.etsy.com/listing/159068; @ClarissaClemens "..Quickened deliberate tactile teases~Peak & tweak erotic squeezes.." @industrialdea #44: ComplianceSigns Acrylic ADA Restroom sign set, 9 x 6 inch <b>#tactile</b> + Braille Blue: ComplianceSigns Acrylic ...',
+					'@dizingof  @PeterLavan Whos asking you or @fabbaloo? :-) The answer should be clear by now.. since the <b>#thingiverse</b> "incident" http://www.itworld.com/it-management/365866/thief-3d-printing-world-may-not-be-who-you-think … @CREAT3Dprinters Our beautiful #3dprinted vases looking great @GDLive_UK makerbot replicator 5th Gen <b> #thingiverse </b> thing:30889 pic.twitter.com/3dYoIPS6YZ @blacklight1880 I made one! Emergency Cello Bridge  from <b>#Thingiverse</b> http://www.thingiverse.com/thing:285454  pic.twitter.com/DdkfdcLfDt @SyxxSense I made one! Fish Bone Wall Hanger from <b>#Thingiverse</b> http://www.thingiverse.com/thing:232464  pic.twitter.com/FCRlEymOCN @RAMTechRob  I made one! League of Legends - Logo Badge from <b>#Thingiverse</b> http://www.thingiverse.com/thing:32280  pic.twitter.com/BLaegWK6IB ...', 
+					'@B3dge By @taylorboswelldesign ! "Our 3D printed business card holder. <b> #makerbot </b>#replicator @azizahsham 5 Pcs 3D Printer... http://onlineshoppersmart.com/5-pcs-3d-printer #04mm <b>#MakerBot </b> @CREAT3Dprinters  Our beautiful #3dprinted vases looking great @GDLive_UK <b>#makerbot</b> replicator 5th Gen #thingiverse thing:30889 pic.twitter.com/3dYoIPS6YZ @3DRegan What is @iMakrStore and @MyMiniFactorys <b>#Makerbot</b> printing in the #Northface window in Kingston? Go and take a look! @CREAT3Dprinters We love our #3dprinted mini lamp. Thingiverse thing 27062 #ultimaker2 <b>#makerbot</b> rep2 #colorfabb signal yellow'
+					];
+
+					for(var i=0; i<5; i++){
+						if(str[i].match(/#3dprinting/g)){
+						str0 = str[i];
+						}
+						if(str[i].match(/#tactile/g)){
+						str1 = str[i];
+						}
+						if(str[i].match(/#digitalfabrication/g)){
+						str2 = str[i];
+						}
+						if(str[i].match(/#Thingiverse/g)){
+							str3 = str[i];
+						} 
+						if(str[i].match(/#Makerbot/g)){
+							str4 = str[i];
+						}
+					}
+
+					//after DOM is ready, attach button click event
+					$("#btn").click(function(){
+
+						var x = document.getElementById("hashList").value;
+						if(!(y = x.match(/#(.)*\b/g))){ //regex for 
+							alert("Hashtag should be followed by special character #");
+						} else {
+							stream  = stream + '\t' + x;
+							//this stream need to save to RDB
+							var tmp = x;
+							
+							if(tmp == "#3dprinting") {
+								displayStr = str0;
+							} else if (tmp == "#tactile") {
+								displayStr = str1;
+							} else if (tmp == "#digitalfabrication") {
+								displayStr = str2;
+							} else if (tmp == "#thingiverse") {
+								displayStr = str3;
+							} else if (tmp == "#makerbot") {
+								displayStr = str4;
+							} else {
+								alert("No search result");
+								displayStr = '';
+								tmp = '';
+							}
+								tagCnt++;
+
+							if(tagCnt === 1){
+								$('#first_h3').html(tmp);
+								$('#first_twt').html(displayStr);
+							} else if(tagCnt === 2) {
+								$('#second_h3').html(tmp);
+								$('#second_twt').html(displayStr);	
+							} else if(tagCnt === 3) {
+								$('#third_h3').html(tmp);
+								$('#third_twt').html(displayStr);
+							} else if(tagCnt === 4) {
+								$('#fourth_h3').html(tmp);
+								$('#fourth_twt').html(displayStr);
+							} else if(tagCnt === 5) {
+								$('#fifth_h3').html(tmp);
+								$('#fifth_twt').html(displayStr);
+							}
+
+							if (displayStr == '' && tmp == '')
+								tagCnt--;
+						//clear filed
+							document.getElementById("hashList").value = "";
+
+							$('#result').html(stream);
+						}	
+						//start ajax request
+						$.ajax({
+							url:"data3.json",
+							//force to handle it as text
+							dataType: "text",
+							success: function(data){
+//								alert(data); //data is text
+
+								var json = $.each($.parseJSON(data), function(){
+									//alert(this.keywords); //json is object
+									
+									var tags = this.keywords;
+									alert(tags);
+
+									for (var i in tags){
+										var res = tags[i].match(a/tag); //matching regexs
+										if(res){
+							//				$('#result').html('user: ' + this.name + '<br />keywords: ' + this.keywords);
+											$('#results').html(res);
+										} //end of if
+									} //end of for	
+								}); //end of each
+							} // end of success callback function()	
+					}); //end of $.ajax
+				});
+			});
+ 		</script>
+		</p>
+		</section>
+
+		<section id="intro">
+			<div class="content">
+			<div id="boxes" class="clearfix">
+				<section id="web-applications">
+				<!-- h3>#3D_printing</h3-->
+				<h3 id="first_h3"></h3>
+					<p id="first_twt"></p>
+				</section>
+				<section id="apis">
+					<h3 id="second_h3"></h3>
+						<p id="second_twt"></p>
+				</section>
+				<section id="performance">
+					<h3 id="third_h3"></h3>
+						<p id="third_twt"> </p>
+				</section>
+				<section id="book">
+					<h3 id="fourth_h3"></h3>
+					<p id="fourth_twt"></p>
+				</section>
+				<section>
+					<h3 id="fifth_h3"></h3>
+					<p id="fifth_twt"></p>
+				</section>
+		</section>
+	<center>	
+
+	<section id="twt-widget">
+		<a class="twitter-timeline" 
+			data-dnt="true" 
+			href="https://twitter.com/iamqubick/printing3d" 
+			data-widget-id="451050605256007680">Tweets from https://twotter.com/iamqubick/printing3d</a>
+ 
+ 		<script>
+	  	//customized timeline widget for 3d printing list
+			!function(d,s,id){
+				var js,fjs = d.getElementsByTagName(s)[0],
+					  		p = /^http:/.test(d.location)?'http':'https';
+				if( !d.getElementById(id) ){
+					js = d.createElement(s);
+					js.id = id;
+					js.src = p + "://platform.twitter.com/widgets.js";
+					fjs.parentNode.insertBefore(js,fjs);
+		 		}
+			}(document,"script","twitter-wjs");
+		</script>
+
+		&nbsp; &nbsp;
+
+		<a class="twitter-timeline" 
+			href="https://twitter.com/search?q=%23tactile"
+			data-widget-id="451052939755278336">Tweets about #tactile</a>
+
+ 		<script>
+		//customized timeline for #tactile hashtag
+			!function(d,s,id){
+				var js,fjs = d.getElementsByTagName(s)[0],
+					  		p = /^http:/.test(d.location)?'http':'https';
+				if( !d.getElementById(id) ){
+						  js = d.createElement(s);
+						  js.id = id;
+						  js.src = p + "://platform.twitter.com/widgets.js";
+						  fjs.parentNode.insertBefore(js,fjs);
+						  }
+				}(document,"script","twitter-wjs");
+	 	</script>
+	</section>
+
+		<br>
+		<a data-pin-do="embedBoard" 
+			href="http://www.pinterest.com/pinterest/pin-pets/"
+			data-pin-scale-width="80" 
+			data-pin-scale-height="320" 
+			data-pin-board-width="400"></a>
+		<!-- Please call pinit.js only once per page -->
+		<script type="text/javascript" async 
+				  src="//assets.pinterest.com/js/pinit.js"></script>
+
+	<?php
+		require_once('TwitterAPIEXchange.php');
+
+		$settings = array(
+		'oauth_access_token' = '143728807-cHJCg0EP2HVTYwqvmmLjdUqCKIVeriL5falTxbkb',
+		'oauth_access_token_secret' = 'yj3p8Lj9WvqbaCuByYv32tZtoSUsjLdmP9Ikri4yUijrm',
+		'customer_key' = 'ZosO7jzK769w5b7xwnUGw',
+		'cunsumer_secret' = 'duDJuwWLo2pgDJrtOsb3Eu1yrjzBJE7jq1yhw1tamM'
+		);
+
+		$url = ' https://api.twitter.com/1.1/statuses/home_timeline.json';
+		$getfield = '?username=J7mbo&skip_status=1';
+		$requestMethod = 'GET';
+		$twitter = new TwitterAPIExchange($settings);
+		echo $twitter.setGetfield($getfield)
+		             .buildOauth($url, $requestMethod).performRequest(); 
+
+		//retrieve twitter using hashtag
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, "http://twitter.com/statuses/user_timeline/myscreenname.json?count=10");
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$output = curl_exec($ch);
+
+		curl_close($ch);
+
+		if($output)
+		{
+			$tweets = json_decode($output, true);
+
+			foreach ($tweets as $tweet){
+				print_r($tweet);
+			}
+		}
+		?>
+
+	<div>
+	</div>
+</body>
+</html>

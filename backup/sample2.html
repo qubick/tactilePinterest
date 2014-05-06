@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+
+    <title>How to Parse a JSON file using jQuery</title>
+    
+    <style>
+        body{
+            text-align: center;
+            font-family: arial;
+	 }
+	 .button {}
+</style>
+
+</head>
+
+<body>
+    <!-- a href="data.json" target="_blank">Open JSON file</a><br / -->
+	<input type="text" id="hash"></input>
+    <input type="button" value="Get value" class="button" id="btn">
+
+	 <?php
+
+	 $conn = pg_pconnect("dbname = tactile");
+	 if(!$conn) {
+	 	echo "An error occured.\n");
+		exit;
+		}
+
+	$result = pg_query($conn, "SELECT tweets FROM searchterm");
+	if(!$result){
+		echo "An error occured.\n");
+		exit;
+	}
+
+	while ($row = pg_fetch_row ($result) ){
+		echo = "tweets: $row[0]";
+		echo "\n";
+		}
+	?>
+
+	 <br />
+    <span id="results"></span>
+
+	 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<!-- script type="text/javascript">
+        //When DOM loaded we attach click event to button
+        $(document).ready(function() {
+			//	alert("message");
+								
+            //after button is clicked we download the data
+            $("#btn").click(function(){
+					 alert("btn clicked");
+						var x = document.getElementById("hash").value; 
+			//		 alert(x);
+                });
+				});
+    </script -->
+
+</body>
+</html>
